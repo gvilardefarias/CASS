@@ -7,18 +7,18 @@ var connectSuccess = function(){
     window.location = "grafico.html";
 }
 
-var conectar = function(){
-    if(cordova.platformId === "ios")
-        bluetoothSerial.connect(uuid, connectSuccess, null);
-    else
-        bluetoothSerial.connect(macAddress, connectSuccess, null); 
+var esperarConexao = function(){
+    bluetoothSerial.isConnected(connectSuccess, esperarConexao);
 }
 
 var bAtivado = function(){
-    $("#btMessage").text("Conectar");
+    $("#btMessage").text("Conecte ao dispositivo");
+    $("#btMessage").css("background-color", "green");
     $("#btMessage").addClass("disabled");
 
-    $("#btMessage").click(conectar());
+    $("#btMessage").click(null);
+
+    esperarConexao();
 };
 
 var bDesativado = function(){
@@ -33,4 +33,3 @@ function onDeviceReady(){
 
     bluetoothSerial.isEnabled(bAtivado, bDesativado);
 }
-

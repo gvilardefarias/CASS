@@ -12,17 +12,11 @@ var isDisconected = function(){
     conected = false;
 }
 
-var getData = function(){
+var getData = function(data){
     if(datas.length>300)
         datas = datas.slice(1);
 
-    bluetoothSerial.read(function (data) {
-        datas.push(data);
-
-        isConected();
-    }, isDisconected);
-
-    //datas.push(Math.random()*100);
+    datas.push(data);
 
     var res = [];
 
@@ -32,33 +26,52 @@ var getData = function(){
     return res;
 }
 
-function update(){
-    plot.setData([getData()]);
+var update = function(data){
+    plot.setData([getData(data)]);
 
     plot.draw();
-    
-    if(isConected())
-        setTimeout(update, 10);
 }
 
+var irRelatorio = function(){
+    window.location = "relatorio.html";
+}
 
-function onDeviceReady(){
+var stopSuccess = function(){
+    $(".btn").click(irRelatorio);
+    $(".btn").text("Relatorio")
+    $(".btRelatorio").show();
+}
+
+var parar = function(){
+    bluetoothSerial.unsubscribeRawData(stopSuccess, parar);
+}
+
+var iniciar = function(){
+    $(".btn").click(parar);
+    $(".btn").text("Parar")
+    $(".btRelatorio").hide();
+
     bluetoothSerial.write("s", isConected, isDisconected);
 
-    if(isConected()){
-        plot = $.plot("#placeholder", [getData()], {
-            series: {
-                shadowSize: 0   
-            },
-            yaxis: {
-                min: 0,
-                max: 1024
-            },
-            xaxis: {
-                show: false
-            }
-        });
+    while(!isConected()) continue;
 
-        update();
-    }
+    plot = $.plot("#placeholder", [getData()], {
+        series: {
+            shadowSize: 0   
+        },
+        yaxis: {
+            min: 0,
+            max: 1024
+        },
+        xaxis: {
+            show: false
+        }
+    });
+
+    bluetoothSerial.subscribeRawData(update, null);
+}
+
+function onDeviceReady(){
+    $(".btRelatorio").hide();
+    $(".btn").click(iniciar);
 }
