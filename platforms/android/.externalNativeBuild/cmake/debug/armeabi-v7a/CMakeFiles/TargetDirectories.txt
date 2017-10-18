@@ -1,0 +1,3 @@
+/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/armeabi-v7a/CMakeFiles/cordova-cpp-bridge-lib.dir

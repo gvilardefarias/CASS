@@ -1,0 +1,22 @@
+        /*CLASS*/: {
+            new: function(/*CONSTRUCTOR_PARAMS*/success, error) {
+                exec(function(instanceId) {
+                    var jsInstance = new (function(_instanceId) {
+                        return {
+                            _className: '/*CLASS*/',
+                            _instanceId: _instanceId,
+                            delete: function(success, error) {
+                                exec(success, error, "/*PLUGIN_NAME*/", "/*CLASS*/_delete", [instanceId]);
+                            }
+/*METHODS*/
+                        }
+
+                    })(instanceId);
+
+                    success(jsInstance);
+
+                }, error, "/*PLUGIN_NAME*/", "/*CLASS*/_new"/*EXEC_PARAMS*/);
+            }
+
+/*STATIC_METHODS*/
+        }

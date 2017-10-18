@@ -1,0 +1,41 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/cpp/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/opt/android-sdk/cmake/3.6.4111459/bin/cmake --build /home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/x86 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"cordova-cpp-bridge-lib-Debug-x86" : 
+		{
+			"abi" : "x86",
+			"artifactName" : "cordova-cpp-bridge-lib",
+			"buildCommand" : "/opt/android-sdk/cmake/3.6.4111459/bin/cmake --build /home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/x86 --target cordova-cpp-bridge-lib",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=i686-none-linux-android --gcc-toolchain=/opt/android-sdk/ndk-bundle/toolchains/x86-4.9/prebuilt/linux-x86_64 --sysroot=/opt/android-sdk/ndk-bundle/sysroot  -Dcordova_cpp_bridge_lib_EXPORTS -isystem /opt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /opt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86/include -isystem /opt/android-sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /opt/android-sdk/ndk-bundle/sysroot/usr/include/i686-linux-android -D__ANDROID_API__=9 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/cpp/CDVCppBridge.cpp",
+					"workingDirectory" : "/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/.externalNativeBuild/cmake/debug/x86"
+				}
+			],
+			"output" : "/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/build/intermediates/cmake/debug/obj/x86/libcordova-cpp-bridge-lib.so",
+			"toolchain" : "6283050715996131352"
+		}
+	},
+	"toolchains" : 
+	{
+		"6283050715996131352" : 
+		{
+			"cCompilerExecutable" : "/opt/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/opt/android-sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

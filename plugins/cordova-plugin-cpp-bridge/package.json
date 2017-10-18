@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-cpp-bridge",
+        "scope": null,
+        "escapedName": "cordova-plugin-cpp-bridge",
+        "name": "cordova-plugin-cpp-bridge",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/gustavo/Documents/Programming/CASS/Cordova"
+    ]
+  ],
+  "_from": "cordova-plugin-cpp-bridge@latest",
+  "_id": "cordova-plugin-cpp-bridge@0.0.7",
+  "_inCache": true,
+  "_location": "/cordova-plugin-cpp-bridge",
+  "_nodeVersion": "5.7.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-cpp-bridge-0.0.7.tgz_1484844296579_0.24241327424533665"
+  },
+  "_npmUser": {
+    "name": "tkyaji",
+    "email": "tkyaji@gmail.com"
+  },
+  "_npmVersion": "3.10.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-cpp-bridge",
+    "scope": null,
+    "escapedName": "cordova-plugin-cpp-bridge",
+    "name": "cordova-plugin-cpp-bridge",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-cpp-bridge/-/cordova-plugin-cpp-bridge-0.0.7.tgz",
+  "_shasum": "8e4b6091d4f92ffd25b25bc77cb7ac57d8799876",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-cpp-bridge",
+  "_where": "/home/gustavo/Documents/Programming/CASS/Cordova",
+  "author": {
+    "name": "tkyaji"
+  },
+  "bugs": {
+    "url": "https://github.com/tkyaji/cordova-plugin-cpp-bridge/issues"
+  },
+  "dependencies": {},
+  "description": "This plugin makes it easy to call C++ from Javascript.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8e4b6091d4f92ffd25b25bc77cb7ac57d8799876",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-cpp-bridge/-/cordova-plugin-cpp-bridge-0.0.7.tgz"
+  },
+  "gitHead": "049f5b85a177748e53861c60fd2807d59c02b783",
+  "homepage": "https://github.com/tkyaji/cordova-plugin-cpp-bridge#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache version 2.0",
+  "maintainers": [
+    {
+      "name": "tkyaji",
+      "email": "tkyaji@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-cpp-bridge",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkyaji/cordova-plugin-cpp-bridge.git"
+  },
+  "scripts": {},
+  "version": "0.0.7"
+}
