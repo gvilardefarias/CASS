@@ -38,24 +38,24 @@ var irRelatorio = function(){
 
 var stopSuccess = function(){
     $(".btn").click(irRelatorio);
-    $(".btn").text("Relatorio")
+    $(".btn").text("Relatorio");
+    $(".btn").css("background-color", "yellow");
+    $(".btn").css("color", "black");
     $(".btRelatorio").show();
 }
 
 var parar = function(){
     bluetoothSerial.unsubscribeRawData(stopSuccess, parar);
+    bluetoothSerial.write("e", null, null);
 }
 
 var iniciar = function(){
     $(".btn").click(parar);
     $(".btn").text("Parar")
+    $(".btn").css("background-color", "red");
     $(".btRelatorio").hide();
 
-    bluetoothSerial.write("s", isConected, isDisconected);
-
-    while(!isConected()) continue;
-
-    plot = $.plot("#placeholder", [getData()], {
+    plot = $.plot("#placeholder", [getData(0)], {
         series: {
             shadowSize: 0   
         },
@@ -68,10 +68,14 @@ var iniciar = function(){
         }
     });
 
+    bluetoothSerial.write("s", isConected, isDisconected);
+
+    while(!isConected()) bluetoothSerial.write("s", isConected, isDisconected);
+
     bluetoothSerial.subscribeRawData(update, null);
 }
 
 function onDeviceReady(){
-    $(".btRelatorio").hide();
     $(".btn").click(iniciar);
+    $(".btRelatorio").hide();
 }

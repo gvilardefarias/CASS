@@ -7,18 +7,15 @@ var connectSuccess = function(){
     window.location = "grafico.html";
 }
 
-var esperarConexao = function(){
-    bluetoothSerial.isConnected(connectSuccess, esperarConexao);
+var conectado = function(){
+    bluetoothSerial.isConnected(connectSuccess, null);
 }
 
 var bAtivado = function(){
-    $("#btMessage").text("Conecte ao dispositivo");
+    $("#btMessage").text("Conectado");
     $("#btMessage").css("background-color", "green");
-    $("#btMessage").addClass("disabled");
 
-    $("#btMessage").click(null);
-
-    esperarConexao();
+    $("#btMessage").click(conectado);
 };
 
 var bDesativado = function(){
@@ -30,6 +27,10 @@ var bDesativado = function(){
 
 function onDeviceReady(){
     $(".btn-con").css("margin-left", -($(".btn-con").width()/2));
+    $(".rel").click(function(){
+        window.location = "relatorio.html";
+    });
+    $(".gra").click(connectSuccess);
 
     bluetoothSerial.isEnabled(bAtivado, bDesativado);
 }
