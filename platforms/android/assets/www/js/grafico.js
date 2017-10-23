@@ -1,9 +1,18 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
-var datas = [], conected = true;
+var datas = [], conected = true, dA = 0, dN = 0, contin = true;
 
 for(var i=0;i<300;i++)
     datas.push(0);
+
+function arrayBufferToString(buffer){
+    var arr = new Uint8Array(buffer);
+    var str = String.fromCharCode.apply(String, arr);
+    if(/[\u0080-\uffff]/.test(str)){
+        throw new Error("this string seems to contain (still encoded) multibytes");
+    }
+    return str;
+}
 
 var isConected = function(){
     conected = true;
@@ -27,9 +36,11 @@ var getData = function(data){
 }
 
 var update = function(data){
-    plot.setData([getData(data)]);
+    if(contin){
+        plot.setData([getData(data)]);
 
-    plot.draw();
+        plot.draw();
+    }
 }
 
 var irRelatorio = function(){
@@ -45,13 +56,15 @@ var stopSuccess = function(){
 }
 
 var parar = function(){
-    bluetoothSerial.unsubscribeRawData(stopSuccess, parar);
-    bluetoothSerial.write("e", null, null);
+    contin = false;
+    
+    bluetoothSerial.write("E", null, null);
+    bluetoothSerial.unsubscribe(stopSuccess, parar);
 }
 
 var iniciar = function(){
     $(".btn").click(parar);
-    $(".btn").text("Parar")
+    $(".btn").text("Parar");
     $(".btn").css("background-color", "red");
     $(".btRelatorio").hide();
 
@@ -68,11 +81,8 @@ var iniciar = function(){
         }
     });
 
-    bluetoothSerial.write("s", isConected, isDisconected);
-
-    while(!isConected()) bluetoothSerial.write("s", isConected, isDisconected);
-
-    bluetoothSerial.subscribeRawData(update, null);
+    bluetoothSerial.write("S", isConected, isDisconected);
+    bluetoothSerial.subscribe('\n', update, null);
 }
 
 function onDeviceReady(){
