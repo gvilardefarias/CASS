@@ -1,0 +1,15 @@
+{ 
+	"header_files": ["Conect.h"],
+	"source_files": ["Conect.cpp"],
+
+	"classes": {
+		"Conect":{
+			"methods": {
+			"main_processamentoEMG": {
+				"is_static":true,
+				"return": "string"
+				}
+			}
+		}
+	}	
+}
