@@ -1,18 +1,11 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var datas = [], conected = true, dA = 0, dN = 0, contin = true;
+var processamento = Module.cwrap('main_processamentoEMG', 'string');
+var add = Module.cwrap('addValue', null, ['number', "number"]);
 
 for(var i=0;i<300;i++)
     datas.push(0);
-
-function arrayBufferToString(buffer){
-    var arr = new Uint8Array(buffer);
-    var str = String.fromCharCode.apply(String, arr);
-    if(/[\u0080-\uffff]/.test(str)){
-        throw new Error("this string seems to contain (still encoded) multibytes");
-    }
-    return str;
-}
 
 var isConected = function(){
     conected = true;
@@ -37,6 +30,8 @@ var getData = function(data){
 
 var update = function(data){
     if(contin){
+        add(data, Date.now());
+
         plot.setData([getData(data)]);
 
         plot.draw();
@@ -48,8 +43,10 @@ var irRelatorio = function(){
 }
 
 var stopSuccess = function(){
-    $(".btn").click(irRelatorio);
-    $(".btn").text("Relatorio");
+    //$(".btn").click(irRelatorio);
+   
+    $(".btn").text(processamento());
+
     $(".btn").css("background-color", "yellow");
     $(".btn").css("color", "black");
     $(".btRelatorio").show();

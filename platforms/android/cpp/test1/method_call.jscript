@@ -1,0 +1,5 @@
+cpp.Conect.new(function(conect) {
+	conect.main_processamentoEMG(){
+		console.log('Conect#main_processamento : ' + ret);
+	}});
+
