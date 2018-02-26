@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
@@ -15,15 +15,61 @@
         <script src="js/jquery.flot.js"></script>
         <script src="js/materialize.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/api.js"></script>
         <script type="text/javascript" src="js/grafico.js"></script>
 
         <title>CASS</title>
     </head>
     <body class="container">
-        <div class="demo-container">
+
+        <div class="demo-container grafico">
             <div id="placeholder" class="demo-placeholder"></div>
         </div>
 
-        <center><a class="waves-effect waves-light btn grenn">Começar<i class="material-icons right btRelatorio">send</i></a></center>
+        <center><a class="waves-effect waves-light btn grenn grafico">Começar</a></center>
+
+        <div class="resultados">
+            <div class="row"></div>
+            <div class="row"><center><h2 class="ok">Resultados</h2></center></div>
+            <div class="divider"></div>
+            <div class="row"></div>
+            <div class="row"><div class="card">
+                <div class="card-content">
+                  <span class="card-title">Média</span>
+                </div>
+                <div class="card-tabs">
+                  <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#test4">Velocidade</a></li>
+                    <li class="tab"><a href="#test5">Contração</a></li>
+                  </ul>
+                </div>
+                <div class="card-content grey lighten-4">
+                  <div id="test4"></div>
+                  <div id="test5"></div>
+                </div>
+            </div></div>
+            <div class="row"><div class="card">
+                <div class="card-content">
+                  <span class="card-title">Desvio entre contrações</span>
+                </div>
+                <div class="card-tabs">
+                  <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#test7">Padrão</a></li>
+                  </ul>
+                </div>
+                <div class="card-content grey lighten-4">
+                  <div id="test7"></div>
+                </div>
+            </div></div>
+            <div class="row">
+                <h3>Tempo dos Picos:</h3>
+            </div>
+            <div class="row">
+                <div class="lista">
+                    
+                </div>
+            </div>
+        </div>
+        </div>
     </body>
 </html>

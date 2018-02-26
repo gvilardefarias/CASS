@@ -8,6 +8,7 @@ for(var i=0;i<300;i++)
     datas.push(0);
 
 var isConected = function(){
+    tempoI = Date.now();
     conected = true;
 }
 var isDisconected = function(){
@@ -32,31 +33,51 @@ var update = function(data){
     if(contin){
         add(data, Date.now());
 
-        plot.setData([getData(data)]);
+        plot1.setData([getData(data)]);
 
-        plot.draw();
+        plot1.draw();
     }
 }
 
 var irRelatorio = function(){
-    window.location = "relatorio.html";
+    $(".grafico").hide();
+    $(".resultados").show();
+
+
+    dados = dados.split(":");
+    dados1 = dados[0].split(",");
+    dados2 = dados[1].split(",");
+
+    dados1[0] = parseFloat(dados1[0]);
+    dados1[1] = parseFloat(dados1[1]);
+    dados1[2] = parseFloat(dados1[2]);
+
+    $("#test4").text((dados1[1]/(dados1[0]/1000)).toFixed(2) + " contrações/s");
+    $("#test5").text((dados1[0]/1000).toFixed(2) + " s");
+
+    $("#test7").text(dados1[2] + " s");
+
+    for(var i=0;i<dados2.length-1;i++){
+        $(".lista").append("<p>"+(Math.abs(parseFloat(dados2[i])-tempoI)/1000).toFixed(2)+" s</p>");
+    }
 }
 
 var stopSuccess = function(){
-    //$(".btn").click(irRelatorio);
+    dados = processamento();
+
+    $(".btn").click(irRelatorio);
    
-    $(".btn").text(processamento());
+    $(".btn").text("relatorio");
 
     $(".btn").css("background-color", "yellow");
     $(".btn").css("color", "black");
-    $(".btRelatorio").show();
 }
 
 var parar = function(){
     contin = false;
     
     bluetoothSerial.write("E", null, null);
-    bluetoothSerial.unsubscribe(stopSuccess, parar);
+    bluetoothSerial.unsubscribe(stopSuccess, null);
 }
 
 var iniciar = function(){
@@ -65,7 +86,7 @@ var iniciar = function(){
     $(".btn").css("background-color", "red");
     $(".btRelatorio").hide();
 
-    plot = $.plot("#placeholder", [getData(0)], {
+    plot1 = $.plot("#placeholder", [getData(0)], {
         series: {
             shadowSize: 0   
         },
@@ -83,6 +104,8 @@ var iniciar = function(){
 }
 
 function onDeviceReady(){
+    bluetoothSerial.connect("98:D3:33:80:8C:8A", iniciar, null);
+    $(".resultados").hide();
     $(".btn").click(iniciar);
     $(".btRelatorio").hide();
 }

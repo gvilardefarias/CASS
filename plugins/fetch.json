@@ -10,7 +10,7 @@
   "cordova-plugin-bluetooth-serial": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-bluetooth-serial"
+      "id": "cordova-plugin-bluetooth-serial@^0.4.7"
     },
     "is_top_level": true,
     "variables": {}
@@ -19,6 +19,22 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-cpp-bridge"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-nativestorage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-nativestorage@^2.2.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-safe": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-safe"
     },
     "is_top_level": true,
     "variables": {}

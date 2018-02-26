@@ -1,6 +1,3 @@
 # ninja log v5
-0	18	0	CMakeFiles/cordova-cpp-bridge-lib.dir/CDVCppBridge.cpp.o	7de7f2251d952111
-18	26	0	/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/build/intermediates/cmake/debug/obj/arm64-v8a/libcordova-cpp-bridge-lib.so	57fafab21d0fdfe6
-0	9	0	build.ninja	c1c62e854404b05a
-0	23	0	CMakeFiles/cordova-cpp-bridge-lib.dir/CDVCppBridge.cpp.o	7de7f2251d952111
-23	35	0	/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/build/intermediates/cmake/debug/obj/arm64-v8a/libcordova-cpp-bridge-lib.so	57fafab21d0fdfe6
+0	20	0	CMakeFiles/cordova-cpp-bridge-lib.dir/CDVCppBridge.cpp.o	7de7f2251d952111
+20	31	0	/home/gustavo/Documents/Programming/CASS/Cordova/platforms/android/build/intermediates/cmake/debug/obj/arm64-v8a/libcordova-cpp-bridge-lib.so	57fafab21d0fdfe6

@@ -2,23 +2,46 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 var uuid = "";
 var macAddress = "";
+var dG = ["0"];
 
 var connectSuccess = function(){
     window.location = "grafico.html";
 }
 
-var esperarConexao = function(){
-    bluetoothSerial.isConnected(connectSuccess, esperarConexao);
+var setDevice = function(device){
+    $("#btMessage").text(device);
+    bluetoothSerial.connect(device, connectSuccess, onDeviceReady);
+}
+
+var abrirModal = function(){
+    $('#modal').modal('open');
+}
+
+var showDevicesS = function(devices){
+    $("#dis").each(function(){ 
+        $(this).remove();
+    });
+
+    for(device in devices){
+        $('#dis').append(`<a href="#!" class="collection-item" id="`+devices[device].id+`">`+devices[device].name+`</a>`);
+        $(`#`+devices[device].id).click(setDevice(devices[device].id));
+    }
+
+    
+    $("#btMessage").text("Dispositivos");
+    $("#btMessage").click(abrirModal);
+    abrirModal();
+}
+
+var showDevices = function(){
+    bluetoothSerial.list(showDevicesS, onDeviceReady);
 }
 
 var bAtivado = function(){
-    $("#btMessage").text("Conecte ao dispositivo");
+    $("#btMessage").text("Dispositivos");
     $("#btMessage").css("background-color", "green");
-    $("#btMessage").addClass("disabled");
 
-    $("#btMessage").click(null);
-
-    esperarConexao();
+    $("#btMessage").click(showDevices);
 };
 
 var bDesativado = function(){
@@ -29,7 +52,12 @@ var bDesativado = function(){
 };
 
 function onDeviceReady(){
+    $('.modal').modal();
     $(".btn-con").css("margin-left", -($(".btn-con").width()/2));
+    $(".rel").click(function(){
+        window.location = "relatorio.html";
+    });
+    $(".gra").click(connectSuccess);
 
     bluetoothSerial.isEnabled(bAtivado, bDesativado);
 }

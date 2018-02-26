@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-safe",
+        "scope": null,
+        "escapedName": "cordova-safe",
+        "name": "cordova-safe",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/gustavo/Documents/Programming/CASS/Cordova"
+    ]
+  ],
+  "_from": "cordova-safe@latest",
+  "_id": "cordova-safe@2.0.1",
+  "_inCache": true,
+  "_location": "/cordova-safe",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "disusered",
+    "email": "crosquillas@gmail.com"
+  },
+  "_npmVersion": "2.13.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-safe",
+    "scope": null,
+    "escapedName": "cordova-safe",
+    "name": "cordova-safe",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-safe/-/cordova-safe-2.0.1.tgz",
+  "_shasum": "e8b9fda055a40c6f652154b43023b4524f240c6b",
+  "_shrinkwrap": null,
+  "_spec": "cordova-safe",
+  "_where": "/home/gustavo/Documents/Programming/CASS/Cordova",
+  "author": {
+    "name": "Carlos Antonio"
+  },
+  "bugs": {
+    "url": "https://github.com/disusered/cordova-safe/issues"
+  },
+  "cordova": {
+    "id": "com.disusered.safe",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Simple file crypto for Cordova.",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.15.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "e8b9fda055a40c6f652154b43023b4524f240c6b",
+    "tarball": "https://registry.npmjs.org/cordova-safe/-/cordova-safe-2.0.1.tgz"
+  },
+  "gitHead": "1d7b440819da191da503113921426c96944fa994",
+  "homepage": "https://github.com/disusered/cordova-safe",
+  "keywords": [
+    "cordova",
+    "file",
+    "encrypt",
+    "decrypt",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "disusered",
+      "email": "crosquillas@gmail.com"
+    }
+  ],
+  "name": "cordova-safe",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/disusered/cordova-safe.git"
+  },
+  "scripts": {
+    "lint": "gulp lint",
+    "watch": "gulp watch"
+  },
+  "version": "2.0.1"
+}

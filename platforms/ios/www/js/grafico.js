@@ -1,11 +1,14 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
-var datas = [], conected = true;
+var datas = [], conected = true, dA = 0, dN = 0, contin = true;
+var processamento = Module.cwrap('main_processamentoEMG', 'string');
+var add = Module.cwrap('addValue', null, ['number', "number"]);
 
 for(var i=0;i<300;i++)
     datas.push(0);
 
 var isConected = function(){
+    tempoI = Date.now();
     conected = true;
 }
 var isDisconected = function(){
@@ -27,35 +30,63 @@ var getData = function(data){
 }
 
 var update = function(data){
-    plot.setData([getData(data)]);
+    if(contin){
+        add(data, Date.now());
 
-    plot.draw();
+        plot1.setData([getData(data)]);
+
+        plot1.draw();
+    }
 }
 
 var irRelatorio = function(){
-    window.location = "relatorio.html";
+    $(".grafico").hide();
+    $(".resultados").show();
+
+
+    dados = dados.split(":");
+    dados1 = dados[0].split(",");
+    dados2 = dados[1].split(",");
+
+    dados1[0] = parseFloat(dados1[0]);
+    dados1[1] = parseFloat(dados1[1]);
+    dados1[2] = parseFloat(dados1[2]);
+
+    $("#test4").text((dados1[1]/(dados1[0]/1000)).toFixed(2) + " contrações/s");
+    $("#test5").text((dados1[0]/1000).toFixed(2) + " s");
+
+    $("#test7").text(dados1[2] + " s");
+
+    for(var i=0;i<dados2.length-1;i++){
+        $(".lista").append("<p>"+(Math.abs(parseFloat(dados2[i])-tempoI)/1000).toFixed(2)+" s</p>");
+    }
 }
 
 var stopSuccess = function(){
+    dados = processamento();
+
     $(".btn").click(irRelatorio);
-    $(".btn").text("Relatorio")
-    $(".btRelatorio").show();
+   
+    $(".btn").text("relatorio");
+
+    $(".btn").css("background-color", "yellow");
+    $(".btn").css("color", "black");
 }
 
 var parar = function(){
-    bluetoothSerial.unsubscribeRawData(stopSuccess, parar);
+    contin = false;
+    
+    bluetoothSerial.write("E", null, null);
+    bluetoothSerial.unsubscribe(stopSuccess, null);
 }
 
 var iniciar = function(){
     $(".btn").click(parar);
-    $(".btn").text("Parar")
+    $(".btn").text("Parar");
+    $(".btn").css("background-color", "red");
     $(".btRelatorio").hide();
 
-    bluetoothSerial.write("s", isConected, isDisconected);
-
-    while(!isConected()) continue;
-
-    plot = $.plot("#placeholder", [getData()], {
+    plot1 = $.plot("#placeholder", [getData(0)], {
         series: {
             shadowSize: 0   
         },
@@ -68,10 +99,12 @@ var iniciar = function(){
         }
     });
 
-    bluetoothSerial.subscribeRawData(update, null);
+    bluetoothSerial.write("S", isConected, isDisconected);
+    bluetoothSerial.subscribe('\n', update, null);
 }
 
 function onDeviceReady(){
-    $(".btRelatorio").hide();
+    $(".resultados").hide();
     $(".btn").click(iniciar);
+    $(".btRelatorio").hide();
 }
